@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AR Menü Demo | Kebap</title>
-  <meta name="description" content="QR menü içinde WebAR ile masada yemek görüntüleme demosu." />
+  <meta name="description" content="QR menü içinde iPhone AR Quick Look ile masada yemek görüntüleme demosu." />
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <style>
     :root {
@@ -16,9 +16,7 @@
       --primary-dark: #b91c1c;
       --border: #fed7aa;
     }
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -26,146 +24,32 @@
       color: var(--text);
       min-height: 100vh;
     }
-
-    .page {
-      width: min(100%, 520px);
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-    }
-
-    .brand-name {
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: -0.03em;
-    }
-
-    .pill {
-      font-size: 12px;
-      background: #ffedd5;
-      color: #9a3412;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 7px 10px;
-      font-weight: 700;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 24px 70px rgba(124, 45, 18, 0.15);
-    }
-
-    model-viewer {
-      width: 100%;
-      height: 360px;
-      background: #fff7ed;
-      --poster-color: transparent;
-      display: block;
-    }
-
-    .content {
-      padding: 20px;
-    }
-
-    .row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-size: 28px;
-      line-height: 1.05;
-      margin: 0;
-      letter-spacing: -0.04em;
-    }
-
-    .price {
-      font-weight: 900;
-      font-size: 22px;
-      color: var(--primary);
-      white-space: nowrap;
-    }
-
-    .desc {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-      margin: 10px 0 18px;
-    }
-
-    .details {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .tag {
-      font-size: 12px;
-      font-weight: 700;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: #f5f5f5;
-      color: #404040;
-    }
-
-    .ar-button {
-      width: calc(100% - 40px);
-      position: absolute;
-      left: 20px;
-      bottom: 20px;
-      border: 0;
-      border-radius: 18px;
-      background: var(--primary);
-      color: white;
-      padding: 15px 18px;
-      font-size: 16px;
-      font-weight: 850;
-      box-shadow: 0 14px 35px rgba(220, 38, 38, 0.35);
-      cursor: pointer;
-    }
-
-    .ar-button:active {
-      transform: translateY(1px);
-      background: var(--primary-dark);
-    }
-
-    .note {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .fallback {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: #fef2f2;
-      color: #991b1b;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .footer {
-      margin-top: 18px;
-      text-align: center;
-      color: #a8a29e;
-      font-size: 12px;
-    }
+    .page { width: min(100%, 520px); margin: 0 auto; padding: 24px 16px 40px; }
+    .brand { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .brand-name { font-weight: 800; font-size: 22px; letter-spacing: -0.03em; }
+    .pill { font-size: 12px; background: #ffedd5; color: #9a3412; border: 1px solid var(--border); border-radius: 999px; padding: 7px 10px; font-weight: 700; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 28px; overflow: hidden; box-shadow: 0 24px 70px rgba(124, 45, 18, 0.15); }
+    .photo { width: 100%; height: 330px; object-fit: cover; background: #fff7ed; display: block; }
+    .viewer-box { display: none; }
+    model-viewer { width: 100%; height: 340px; background: #fff7ed; --poster-color: transparent; display: block; }
+    .content { padding: 20px; }
+    .row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+    h1 { font-size: 28px; line-height: 1.05; margin: 0; letter-spacing: -0.04em; }
+    .price { font-weight: 900; font-size: 22px; color: var(--primary); white-space: nowrap; }
+    .desc { color: var(--muted); font-size: 15px; line-height: 1.55; margin: 10px 0 18px; }
+    .details { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .tag { font-size: 12px; font-weight: 700; padding: 7px 10px; border-radius: 999px; background: #f5f5f5; color: #404040; }
+    .ios-ar-link { display: block; margin-top: 10px; text-decoration: none; }
+    .ios-ar-link img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 14px 35px rgba(220, 38, 38, 0.28); }
+    .android-button { display: none; width: 100%; border: 0; border-radius: 18px; background: var(--primary); color: white; padding: 15px 18px; font-size: 16px; font-weight: 850; box-shadow: 0 14px 35px rgba(220, 38, 38, 0.35); cursor: pointer; }
+    .android-button:active { transform: translateY(1px); background: var(--primary-dark); }
+    .note { margin-top: 14px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .fallback { display: none; margin-top: 12px; padding: 12px 14px; border-radius: 16px; background: #fef2f2; color: #991b1b; font-size: 13px; line-height: 1.45; }
+    .footer { margin-top: 18px; text-align: center; color: #a8a29e; font-size: 12px; }
+    body.android .ios-ar-link { display: none; }
+    body.android .android-button { display: block; }
+    body.android .viewer-box { display: block; }
+    body.android .photo { display: none; }
   </style>
 </head>
 <body>
@@ -176,27 +60,26 @@
     </div>
 
     <section class="card">
-      <!--
-        Normal menü fotoğrafı gibi görünmesi için poster kullanıyoruz.
-        Kullanıcı "Masada Görüntüle"ye basınca aynı bileşen AR modunu açıyor.
-      -->
-      <model-viewer
-        id="kebapModel"
-        src="./models/kebap.glb"
-        poster="./assets/kebap-photo.svg"
-        alt="Kebap 3D model"
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        ar-placement="floor"
-        ar-scale="fixed"
-        camera-controls
-        touch-action="pan-y"
-        reveal="interaction"
-        shadow-intensity="1"
-        exposure="1"
-      >
-        <button class="ar-button" slot="ar-button">Masada Görüntüle</button>
-      </model-viewer>
+      <img class="photo" src="./assets/kebap-photo.svg" alt="Adana Kebap" />
+
+      <div class="viewer-box">
+        <model-viewer
+          id="kebapModel"
+          src="./models/kebap.glb"
+          ios-src="./models/kebap.usdz"
+          poster="./assets/kebap-photo.svg"
+          alt="Kebap 3D model"
+          ar
+          ar-modes="quick-look scene-viewer webxr"
+          ar-placement="floor"
+          ar-scale="fixed"
+          camera-controls
+          touch-action="pan-y"
+          reveal="interaction"
+          shadow-intensity="1"
+          exposure="1">
+        </model-viewer>
+      </div>
 
       <div class="content">
         <div class="row">
@@ -205,34 +88,59 @@
         </div>
         <p class="desc">
           Izgara kebap, közlenmiş biber, domates ve lavaş ile servis edilir.
-          Bu sayfa, QR menü içinde AR yemek önizleme yapısını göstermek için hazırlanmış örnektir.
+          Bu sayfa, QR menü içinde iPhone’da AR Quick Look ile masada yemek görüntüleme yapısını test etmek için hazırlandı.
         </p>
         <div class="details">
-          <span class="tag">3D önizleme</span>
-          <span class="tag">WebAR</span>
+          <span class="tag">iPhone AR</span>
+          <span class="tag">USDZ</span>
           <span class="tag">App gerektirmez</span>
         </div>
+
+        <!-- iPhone / Safari için en sağlam yöntem: rel="ar" + USDZ linki -->
+        <a class="ios-ar-link" rel="ar" href="./models/kebap.usdz">
+          <img src="./assets/ios-ar-button.svg" alt="Masada Görüntüle" />
+        </a>
+
+        <!-- Android için alternatif tetikleyici -->
+        <button class="android-button" id="androidArButton">Masada Görüntüle</button>
+
         <div id="fallback" class="fallback">
-          Bu cihazda AR açılamadı. Android için ARCore/Google Play Services for AR, iPhone için USDZ dosyası gerekir.
+          AR açılamadı. iPhone’da Safari ile açtığından emin ol. Android’de ise Chrome ve Google Play Services for AR gerekir.
         </div>
+
         <p class="note">
-          Telefonda açıp “Masada Görüntüle”ye bas. Yayında HTTPS üzerinden çalıştırıldığında destekli cihazlarda kamera açılır ve modeli masaya yerleştirebilirsin.
+          iPhone’da Safari ile açıp “Masada Görüntüle”ye bas. Quick Look ekranında AR seçeneğiyle modeli masaya yerleştirebilirsin.
         </p>
       </div>
     </section>
 
-    <div class="footer">MVP demo dosyasıdır. Gerçek üründe kendi kebap.glb ve kebap.usdz dosyalarını koyabilirsin.</div>
+    <div class="footer">MVP demo dosyasıdır. Gerçek projede her yemek için fotoğraf + GLB + USDZ kullanılır.</div>
   </main>
 
   <script>
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    if (isAndroid) document.body.classList.add('android');
+
     const model = document.querySelector('#kebapModel');
+    const androidButton = document.querySelector('#androidArButton');
     const fallback = document.querySelector('#fallback');
 
-    model.addEventListener('ar-status', (event) => {
-      if (event.detail.status === 'failed') {
-        fallback.style.display = 'block';
-      }
-    });
+    if (androidButton && model) {
+      androidButton.addEventListener('click', async () => {
+        fallback.style.display = 'none';
+        try {
+          await model.updateComplete;
+          model.activateAR();
+        } catch (error) {
+          fallback.style.display = 'block';
+          console.error(error);
+        }
+      });
+
+      model.addEventListener('ar-status', (event) => {
+        if (event.detail.status === 'failed') fallback.style.display = 'block';
+      });
+    }
   </script>
 </body>
 </html>
