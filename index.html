@@ -55,6 +55,7 @@
 
     .ar-link {
       display: block;
+      position: relative;
       text-align: center;
       text-decoration: none;
       border-radius: 16px;
@@ -64,6 +65,16 @@
       font-size: 17px;
       font-weight: bold;
       margin-top: 16px;
+      overflow: hidden;
+    }
+
+    .ar-link img {
+      width: 1px;
+      height: 1px;
+      opacity: 0.01;
+      position: absolute;
+      left: 0;
+      top: 0;
     }
 
     .note {
@@ -71,6 +82,14 @@
       color: #777;
       font-size: 13px;
       line-height: 1.4;
+    }
+
+    .test-link {
+      display: block;
+      margin-top: 12px;
+      color: #dc2626;
+      font-size: 14px;
+      text-align: center;
     }
   </style>
 </head>
@@ -80,7 +99,7 @@
     <h2>Demo Kebapçı</h2>
 
     <section class="card">
-      <img class="food-img" src="./assets/kebap-photo.svg" alt="Kebap fotoğrafı">
+      <img class="food-img" src="./kebap-photo.svg" alt="Kebap fotoğrafı">
 
       <div class="content">
         <h1>Adana Kebap</h1>
@@ -90,13 +109,18 @@
           Izgara kebap, közlenmiş biber, domates ve lavaş ile servis edilir.
         </p>
 
-        <a class="ar-link" rel="ar" href="./models/kebap.usdz">
-          <img src="./assets/kebap-photo.svg" alt="" style="display:none;">
+        <a class="ar-link" rel="ar" href="./kebap.usdz">
+          <img src="./kebap-photo.svg" alt="">
           Masada Görüntüle
         </a>
 
+        <a class="test-link" href="./kebap.usdz">
+          Direkt USDZ test linki
+        </a>
+
         <p class="note">
-          iPhone’da Safari ile aç. Butona basınca AR Quick Look açılır. Kamera açıldıktan sonra telefonu masaya doğru yavaşça hareket ettir.
+          iPhone’da Safari ile aç. “Masada Görüntüle”ye basınca AR Quick Look açılmalı.
+          Açılmazsa önce “Direkt USDZ test linki”ne bas.
         </p>
       </div>
     </section>
