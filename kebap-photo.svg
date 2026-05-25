@@ -1,0 +1,31 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7ED"/>
+      <stop offset="1" stop-color="#FED7AA"/>
+    </linearGradient>
+    <filter id="shadow" x="230" y="280" width="750" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="34" flood-color="#7C2D12" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="1030" cy="130" r="170" fill="#FFEDD5" opacity="0.65"/>
+  <circle cx="160" cy="760" r="220" fill="#FDBA74" opacity="0.22"/>
+  <g filter="url(#shadow)">
+    <ellipse cx="600" cy="502" rx="350" ry="138" fill="#F8FAFC"/>
+    <ellipse cx="600" cy="502" rx="300" ry="105" fill="#FFEFD8"/>
+    <ellipse cx="600" cy="518" rx="255" ry="78" fill="#FFF7ED"/>
+    <rect x="405" y="405" width="390" height="52" rx="26" transform="rotate(7 405 405)" fill="#8B3A1C"/>
+    <rect x="430" y="469" width="350" height="45" rx="22.5" transform="rotate(-5 430 469)" fill="#A6461F"/>
+    <rect x="470" y="530" width="270" height="38" rx="19" transform="rotate(4 470 530)" fill="#6B2E16"/>
+    <circle cx="425" cy="515" r="38" fill="#DC2626"/>
+    <circle cx="425" cy="515" r="18" fill="#FCA5A5" opacity="0.7"/>
+    <path d="M765 419C811 392 851 421 839 459C827 496 770 500 750 465C741 449 746 430 765 419Z" fill="#16A34A"/>
+    <path d="M786 428C817 410 840 427 832 452C824 476 788 480 773 458C765 446 771 436 786 428Z" fill="#86EFAC" opacity="0.5"/>
+    <rect x="365" y="390" width="510" height="10" rx="5" transform="rotate(6 365 390)" fill="#92400E"/>
+    <path d="M485 590C530 555 613 552 658 593C607 615 531 616 485 590Z" fill="#FBBF24"/>
+    <path d="M525 590C548 574 594 572 617 591" stroke="#FEF3C7" stroke-width="10" stroke-linecap="round" opacity="0.65"/>
+  </g>
+  <text x="74" y="112" fill="#7C2D12" font-family="Arial, sans-serif" font-size="42" font-weight="800">Adana Kebap</text>
+  <text x="76" y="158" fill="#9A3412" font-family="Arial, sans-serif" font-size="24" font-weight="600">AR menü demo görseli</text>
+</svg>
