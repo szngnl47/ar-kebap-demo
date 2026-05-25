@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AR Menü Demo | Kebap</title>
+  <meta name="description" content="QR menü içinde WebAR ile masada yemek görüntüleme demosu." />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <style>
+    :root {
+      --bg: #fff7ed;
+      --card: #ffffff;
+      --text: #171717;
+      --muted: #737373;
+      --primary: #dc2626;
+      --primary-dark: #b91c1c;
+      --border: #fed7aa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, var(--bg), #ffffff);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .pill {
+      font-size: 12px;
+      background: #ffedd5;
+      color: #9a3412;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-weight: 700;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(124, 45, 18, 0.15);
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 360px;
+      background: #fff7ed;
+      --poster-color: transparent;
+      display: block;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.05;
+      margin: 0;
+      letter-spacing: -0.04em;
+    }
+
+    .price {
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .desc {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      margin: 10px 0 18px;
+    }
+
+    .details {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f5f5f5;
+      color: #404040;
+    }
+
+    .ar-button {
+      width: calc(100% - 40px);
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      border: 0;
+      border-radius: 18px;
+      background: var(--primary);
+      color: white;
+      padding: 15px 18px;
+      font-size: 16px;
+      font-weight: 850;
+      box-shadow: 0 14px 35px rgba(220, 38, 38, 0.35);
+      cursor: pointer;
+    }
+
+    .ar-button:active {
+      transform: translateY(1px);
+      background: var(--primary-dark);
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .fallback {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #fef2f2;
+      color: #991b1b;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      color: #a8a29e;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="brand">
+      <div class="brand-name">Demo Kebapçı</div>
+      <div class="pill">QR Menü + AR</div>
+    </div>
+
+    <section class="card">
+      <!--
+        Normal menü fotoğrafı gibi görünmesi için poster kullanıyoruz.
+        Kullanıcı "Masada Görüntüle"ye basınca aynı bileşen AR modunu açıyor.
+      -->
+      <model-viewer
+        id="kebapModel"
+        src="./models/kebap.glb"
+        poster="./assets/kebap-photo.svg"
+        alt="Kebap 3D model"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        ar-placement="floor"
+        ar-scale="fixed"
+        camera-controls
+        touch-action="pan-y"
+        reveal="interaction"
+        shadow-intensity="1"
+        exposure="1"
+      >
+        <button class="ar-button" slot="ar-button">Masada Görüntüle</button>
+      </model-viewer>
+
+      <div class="content">
+        <div class="row">
+          <h1>Adana Kebap</h1>
+          <div class="price">14,90 €</div>
+        </div>
+        <p class="desc">
+          Izgara kebap, közlenmiş biber, domates ve lavaş ile servis edilir.
+          Bu sayfa, QR menü içinde AR yemek önizleme yapısını göstermek için hazırlanmış örnektir.
+        </p>
+        <div class="details">
+          <span class="tag">3D önizleme</span>
+          <span class="tag">WebAR</span>
+          <span class="tag">App gerektirmez</span>
+        </div>
+        <div id="fallback" class="fallback">
+          Bu cihazda AR açılamadı. Android için ARCore/Google Play Services for AR, iPhone için USDZ dosyası gerekir.
+        </div>
+        <p class="note">
+          Telefonda açıp “Masada Görüntüle”ye bas. Yayında HTTPS üzerinden çalıştırıldığında destekli cihazlarda kamera açılır ve modeli masaya yerleştirebilirsin.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">MVP demo dosyasıdır. Gerçek üründe kendi kebap.glb ve kebap.usdz dosyalarını koyabilirsin.</div>
+  </main>
+
+  <script>
+    const model = document.querySelector('#kebapModel');
+    const fallback = document.querySelector('#fallback');
+
+    model.addEventListener('ar-status', (event) => {
+      if (event.detail.status === 'failed') {
+        fallback.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
